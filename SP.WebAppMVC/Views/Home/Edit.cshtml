@@ -1,0 +1,42 @@
+﻿@model SP.DataAccess.Entities.Student
+
+@{
+  ViewBag.Title = "Edit";
+}
+
+<div class="d-flex justify-content-center m-5">
+  <div class="card card-outline-secondary w-50">
+    <div class="card-header">
+      <h3 class="mb-1 display-4">Edit Student</h3>
+    </div>
+    <div class="card-body">
+
+      @using (Html.BeginForm())
+      {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group row">
+          @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "col-lg-3 col-form-label form-control-label" })
+          <div class="col-lg-9">
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Title, string.Empty, new { @class = "text-danger" })
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label form-control-label"></label>
+          <div class="col-lg-9">
+            @Html.ActionLink("Back", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-secondary" })
+            <input class="btn btn-success" type="submit" value="Save Changes">
+          </div>
+        </div>
+      }
+
+    </div>
+  </div>
+
+</div>
+
+@section Scripts {
+  @Scripts.Render("~/bundles/jqueryval")
+}
